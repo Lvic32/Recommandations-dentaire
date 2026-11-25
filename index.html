@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guide Internes Chir Orale (Copy)</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#14212b;--mute:#5d6b76;--acc:#0e7c86;--acc2:#e6f4f5;--warn:#b4471a;--warnbg:#fdf0e9;--tip:#2a6fb0;--tipbg:#eaf2fb;--line:#dde3e8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f161b;--card:#18222a;--ink:#e6edf2;--mute:#93a3ae;--acc:#3fc1c9;--acc2:#16323a;--warn:#f08a5d;--warnbg:#36221a;--tip:#7fb6ea;--tipbg:#1a2a3a;--line:#2a3742}}
+:root[data-theme="dark"]{--bg:#0f161b;--card:#18222a;--ink:#e6edf2;--mute:#93a3ae;--acc:#3fc1c9;--acc2:#16323a;--warn:#f08a5d;--warnbg:#36221a;--tip:#7fb6ea;--tipbg:#1a2a3a;--line:#2a3742}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 60px}
+header{padding:28px 0 12px}header small{color:var(--acc);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+h1{margin:4px 0 4px;font-size:28px;line-height:1.15}header p{margin:0;color:var(--mute)}
+.top{display:flex;gap:8px;align-items:center;justify-content:space-between}
+#theme{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 12px;cursor:pointer}
+#q,#aq,#tq{width:100%;margin:16px 0 10px;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:20px;font-size:14px;cursor:pointer}.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;cursor:pointer;color:var(--ink);font:inherit}
+.card:hover{border-color:var(--acc)}.card .cat{font-size:12px;color:var(--acc);font-weight:700;text-transform:uppercase;letter-spacing:.05em}.card h3{margin:4px 0 2px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:14px}
+.soon{opacity:.55;cursor:default}.soon:hover{border-color:var(--line)}
+.back{background:none;border:0;color:var(--acc);font:inherit;font-weight:600;padding:20px 0 8px;cursor:pointer}
+.fiche h2{font-size:24px;margin:6px 0 4px;line-height:1.2}.meta{color:var(--mute);font-size:14px;margin-bottom:16px}
+.prog{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:18px}.prog i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s}
+.step{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
+.step input{width:22px;height:22px;accent-color:var(--acc);flex:none;margin-top:2px}.step.done{opacity:.55}.step.done .t{text-decoration:line-through}
+.step .n{font-weight:700;color:var(--acc);margin-right:4px}.step ul{margin:6px 0 0;padding-left:18px}.step li{margin:2px 0}
+.box{border-radius:12px;padding:10px 14px;margin:8px 0;font-size:15px}.warn{background:var(--warnbg);color:var(--warn);border-left:4px solid var(--warn);font-weight:600}.tip{background:var(--tipbg);color:var(--tip);border-left:4px solid var(--tip)}
+img.shot{max-width:100%;border-radius:10px;border:1px solid var(--line);margin-top:8px;display:block}
+.ph{margin-top:8px;border:2px dashed var(--line);border-radius:10px;padding:14px;color:var(--mute);font-size:13px;text-align:center}
+.tel{display:inline-block;background:var(--acc2);color:var(--acc);padding:2px 10px;border-radius:12px;font-weight:700;text-decoration:none}
+.hide{display:none}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;padding:12px 0 8px;border-bottom:1px solid var(--line)}
+.tab{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:10px;font:inherit;font-weight:600;cursor:pointer}.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px}.seg button{flex:1 1 30%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 6px;font:inherit;font-size:13px;cursor:pointer;line-height:1.25}.seg button.on{border-color:var(--acc);background:var(--acc2);color:var(--acc);font-weight:700}
+.lbl{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin-top:6px}
+.res{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.res h3{margin:2px 0 8px;font-size:17px}.res .cat{font-size:12px;color:var(--acc);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.bdg{display:inline-block;padding:3px 10px;border-radius:12px;font-size:13px;font-weight:700;margin:0 4px 4px 0}
+.R{background:#dff3e6;color:#17713b}.N{background:var(--line);color:var(--mute)}.CI{background:#fbe1e1;color:#a52222}.C{background:#fff1cf;color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .R{background:#173a25;color:#7fdc9e}:root:not([data-theme="light"]) .CI{background:#401b1b;color:#ff9b9b}:root:not([data-theme="light"]) .C{background:#3b2f12;color:#f3c45a}}
+:root[data-theme="dark"] .R{background:#173a25;color:#7fdc9e}:root[data-theme="dark"] .CI{background:#401b1b;color:#ff9b9b}:root[data-theme="dark"] .C{background:#3b2f12;color:#f3c45a}
+.rx{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:15px}.rx b{color:var(--acc)}.rx div{margin:4px 0}
+.small{font-size:13px;color:var(--mute)}details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px}summary{font-weight:700;cursor:pointer}details ul{padding-left:18px;margin:8px 0}details li{margin:3px 0;font-size:15px}
+</style></head><body><div id="nojs" style="margin:16px;padding:14px 16px;border-radius:14px;background:#fdf0e9;color:#8a3a12;border-left:4px solid #b4471a;font:15px/1.45 system-ui,sans-serif"><b>⚠️ Les recommandations ne s'affichent pas ?</b><br>Tu es dans un aperçu qui bloque les fonctions de la page (fréquent sur iPhone depuis Messages, WhatsApp, Mail ou Fichiers). Ouvre la page avec le <b>lien</b> plutôt que le fichier, dans Safari ou Chrome.</div><div class="wrap">
+<div id="abx"></div>
+</div>
+<script>
+try{document.getElementById("nojs").remove()}catch(e){}
+const ls={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const th=ls.get("theme");if(th)document.documentElement.dataset.theme=th;
+</script>
+<script>
+/* ===== Module antibiotiques — source : HAS, Prescription des antibiotiques en pratique bucco-dentaire, juillet 2026 (adulte) ===== */
+const MG="Acte contre-indiqué si pathologie maligne ou irradiation ≥ 40 Gy",M="Acte contre-indiqué si pathologie maligne";
+const RX={
+std:{t:"Prise unique pré-opératoire",l1:"<b>Amoxicilline 2 g</b> per os, 30 à 60 min avant l'acte<br>ou <b>amoxicilline IV 2 g</b> (au plus tôt 60 min avant, au plus tard avant l'incision)",alt:"Per os 30–60 min avant : clarithromycine 500 mg · azithromycine 500 mg · pristinamycine 1 g<br>IV/IM : céfazoline 1 g · ceftriaxone 1 g · clindamycine IV 900 mg"},
+perop:{t:"Antibioprophylaxie post-opératoire",l1:"<b>Amoxicilline 1 g</b>, 2 fois par jour, 5 jours",alt:"Clarithromycine 500 mg ×2/j, 5 j · azithromycine 500 mg ×1/j, 3 j · pristinamycine 1 g ×2/j, 5 j"},
+plaie:{t:"Antibioprophylaxie post-opératoire",l1:"<b>Amoxicilline + acide clavulanique 1 g + 125 mg</b>, 3 fois par jour, 5 jours",alt:"Pristinamycine 1 g ×3/j, 5 j · clindamycine 600 mg ×3/j, 5 j"},
+onm:{t:"Haut risque ONM, acte chirurgical exposant l'os : pré- ET post-op",l1:"<b>Amoxicilline 2 g</b> 1 h avant, puis <b>500 mg ×3/j pendant 7 jours</b>",alt:"Clarithromycine 500 mg 1 h avant puis 500 mg ×2/j, 7 j · azithromycine 500 mg 1 h avant puis 500 mg ×1/j, 2 j · pristinamycine 1 g 1 h avant puis 1 g ×2/j, 7 j"}};
+// [acte, domaine, mots-clés, G, RI, ONM, note ONM, schéma spécial, note]
+const AP=[
+["Pulpotomie de dent temporaire","Endodontie","","N","N","N"],
+["Traitement endodontique de dent temporaire","Endodontie","","N","R*","N"],
+["Coiffage / pulpotomie de dent permanente","Endodontie","","N","N","N"],
+["Traitement endodontique d'urgence, pulpe vitale","Endodontie","pulpectomie","N","N","N"],
+["Traitement endodontique, pulpe non vitale","Endodontie","nécrose","N","R","N"],
+["Reprise de traitement endodontique","Endodontie","retraitement","N","R","N"],
+["Chirurgie endodontique (péri-apicale / péri-radiculaire)","Endodontie","résection apicale apicectomie","N","R","R*",MG],
+["Sondage parodontal","Parodontologie","","N","N","N"],
+["Détartrage / surfaçage radiculaire","Parodontologie","débridement","N","R*","N"],
+["Chirurgie d'assainissement parodontal","Parodontologie","lambeau","N","R*","R*"],
+["Élongation coronaire","Parodontologie","","N","R*","R*"],
+["Amputation radiculaire","Parodontologie","","N","R*","R*",MG],
+["Chirurgie plastique parodontale (lambeau, greffe gingivale)","Parodontologie","greffe conjonctive","N","R*","R*",MG],
+["Chirurgie parodontale reconstructrice / régénératrice (biomatériaux)","Parodontologie","ROG RTG régénération","N","R*","R*",MG],
+["Pose d'implant(s)","Implantologie","implant","N","R*","R*",M,null,"Population générale : non recommandée en systématique, possible selon le profil (échecs d'ostéo-intégration, os peu vascularisé) et la complexité (> 3 implants, extraction-implantation immédiate, > 1 h 30)."],
+["Greffe osseuse pré- ou per-implantaire","Implantologie","augmentation osseuse","R","R*","R*",MG],
+["Élévation sinusienne (sinus lift)","Implantologie","comblement sinus","R","R*","R*",MG],
+["Chirurgie plastique péri-implantaire","Implantologie","","N","R*","R*"],
+["Dégagement d'implant","Implantologie","","N","N","N"],
+["Chirurgie des péri-implantites","Implantologie","","N","R*","R*",M],
+["Avulsion dentaire (dent sur arcade, racines, alvéolectomie, séparation)","Chirurgie orale","extraction","N","R","R"],
+["Avulsion de dent incluse, ectopique ou en désinclusion","Chirurgie orale","dent de sagesse 38 48 extraction","R","R","R*"],
+["Autotransplantation dentaire","Chirurgie orale","","R","R*","R*",MG],
+["Chirurgie osseuse pré-prothétique (tori, tubérosité)","Chirurgie orale","torus","N","R*","R*"],
+["Chirurgie pré-orthodontique de dent incluse ou enclavée","Chirurgie orale","désinclusion traction canine","N","R","R*",MG],
+["Freinectomie","Chirurgie orale","frein","N","R","N"],
+["Biopsie / exérèse de lésion bénigne des tissus mous","Chirurgie orale","muqueuse","N","R","N"],
+["Biopsie / exérèse de lésion osseuse bénigne des mâchoires","Chirurgie orale","kyste énucléation","N","R","R"],
+["Communication bucco-sinusienne","Évènement per-op","CBS","R","R","R",null,"perop"],
+["Exposition accidentelle à l'hypochlorite de sodium","Évènement per-op","HCl javel","R","R","R",null,"perop"],
+["Emphysème cervico-facial","Évènement per-op","","R","R","R",null,"perop"],
+["Réimplantation de dent permanente expulsée","Traumatologie","","N","R*","CI"],
+["Repositionnement de dent luxée, intruse ou extruse (± fracture alvéolaire)","Traumatologie","luxation","N","R","R"],
+["Fracture coronaire / radiculaire","Traumatologie","","N","N","N"],
+["Plaie des tissus mous","Traumatologie","","N","N","N"],
+["Plaie fortement souillée / morsure de mammifère","Traumatologie","chien","R","R","R",null,"plaie"],
+["Pose / dépose de dispositif orthodontique collé ou scellé","Orthodontie","","N","N","N*"],
+["Pose de matériel d'ancrage orthodontique","Orthodontie","minivis","N","R","CI"],
+["Soin prothétique / prise d'empreintes","Prothèse","","N","N","N"],
+["Anesthésie para-apicale ou loco-régionale","Anesthésie","","N","N","N"],
+["Anesthésie intraligamentaire","Anesthésie","","N","N","R*",null,null,"Uniquement en 2ᵉ intention."],
+["Anesthésie ostéo-centrale","Anesthésie","","N","N","R*",MG,null,"Uniquement en 2ᵉ intention."],
+["Prévention, digue, soin restaurateur, radio, dépose de fils","Autres actes","","N","N","N"]];
+const COND="Uniquement si haut risque d'endocardite ou risque infectieux augmenté, ou si signes d'extension locale (suppuration), régionale (tuméfaction, trismus) ou systémique (adénopathie, fièvre). Possible si un geste local est impossible.";
+const A1={l1:"<b>Amoxicilline 1 g</b>, 3 fois par jour, 3 jours (+2 j si symptômes persistants)",alt:"Clarithromycine (hors AMM) 500 mg ×2/j, 3 j · azithromycine 500 mg ×1/j, 3 j · pristinamycine (hors AMM) 1 g ×2/j, 3 j",l2:"Amoxicilline + métronidazole 1 g + 500 mg ×3/j, 3 j · ou amoxicilline + ac. clavulanique 1 g + 125 mg ×3/j, 3 j<br>Si allergie : clarithromycine + métronidazole (hors AMM) 500 mg ×2/j + 500 mg ×3/j, 3 j"};
+const OST={l1:"<b>Amoxicilline + acide clavulanique 1 g + 125 mg</b>, 3 fois par jour, ≥ 14 jours et jusqu'à amendement des signes locaux",alt:"Clarithromycine + métronidazole (hors AMM) 500 mg ×2/j + 500 mg ×3/j, ≥ 14 j",l2:"Antibiothérapie adaptée au prélèvement osseux",note:"Prélèvement osseux conseillé avant de débuter (antibiogramme). Bithérapie de 1ʳᵉ intention."};
+// [indication, domaine, mots-clés, statut, schéma, note, iv]
+const CU=[
+["Pulpite","Endodontie","","N"],
+["Parodontite apicale aiguë","Endodontie","rage de dent","C",A1],
+["Abcès apical aigu","Endodontie","abcès dentaire","C",A1],
+["Parodontite / abcès apical chronique","Endodontie","granulome","N"],
+["Flambée infectieuse (flare-up)","Endodontie","","C",A1],
+["Gingivite","Parodontologie","","N"],
+["Parodontite (hors cas ci-dessous) / poches résiduelles","Parodontologie","","N"],
+["Parodontite stade III/IV + inadéquation biofilm/destruction + ratio perte osseuse/âge > 1","Parodontologie","chicago","R",{l1:"<b>Amoxicilline + métronidazole 500 mg + 500 mg</b>, 3 fois par jour, 3 jours",alt:"Métronidazole 500 mg ×3/j, 3 j · azithromycine 500 mg ×1/j, 3 j",l2:"Non applicable",note:"Après la dernière séance d'instrumentation sous-gingivale. Bithérapie de 1ʳᵉ intention."}],
+["Abcès parodontal / abcès endo-parodontal","Parodontologie","","C",A1],
+["Maladie parodontale nécrosante AVEC atteinte systémique","Parodontologie","GUN","R",{l1:"<b>Métronidazole 500 mg</b>, 3 fois par jour, 3 jours (+2 j si persistance)",alt:"Amoxicilline 1 g ×3/j, 3 j"}],
+["Maladie parodontale nécrosante SANS atteinte systémique","Parodontologie","GUN","C",{l1:"<b>Métronidazole 500 mg</b>, 3 fois par jour, 3 jours (+2 j si persistance)",alt:"Amoxicilline 1 g ×3/j, 3 j"}],
+["Mucosite péri-implantaire","Implantologie","","N"],
+["Péri-implantite","Implantologie","","C",A1,"Haut risque d'endocardite : tout traitement de la péri-implantite est contre-indiqué."],
+["Infection de greffe osseuse ou gingivale","Implantologie","","R",A1],
+["Péricoronarite simple (inflammation)","Chirurgie orale","dent de sagesse","N"],
+["Infection péricoronaire avec signes d'extension","Chirurgie orale","dent de sagesse péricoronarite trismus","R",Object.assign({},A1,{alt:"Métronidazole 500 mg ×3/j, 3 j (+2 j si persistance)"})],
+["Alvéolite sèche","Chirurgie orale","","N"],
+["Alvéolite suppurée","Chirurgie orale","","C",A1,"La suppuration locale seule ne suffit pas à poser l'indication."],
+["Cellulite cervico-faciale (dermohypodermite)","Chirurgie orale","abcès tuméfaction","R",A1,"Hospitalisation ± IV si signes systémiques : dysphagie, gêne respiratoire (surtout en décubitus), extension loco-régionale, crépitation sous-cutanée.",1],
+["Sialadénite bactérienne","Chirurgie orale","glande salivaire parotidite","R",A1],
+["Sinusite maxillaire aiguë d'origine dentaire","Chirurgie orale","sinus","R",{l1:"<b>Amoxicilline + acide clavulanique 1 g + 125 mg</b>, 3 fois par jour, 7 jours",alt:"Allergie pénicillines (sans CI céphalosporines) : cefpodoxime proxétil 200 mg ×2/j, 5 j · céfuroxime axétil 250 mg ×2/j, 5 j<br>CI aux β-lactamines : pristinamycine 1 g ×2/j, 4 j",l2:"Avis spécialisé ORL",note:"Bithérapie de 1ʳᵉ intention (selon la HAS)."}],
+["Ostéite","Chirurgie orale","","R",OST],
+["Ostéomyélite","Chirurgie orale","","R",OST,null,1],
+["ONM sans signe d'infection","Ostéonécrose","ostéonécrose","N"],
+["ONM avec signes d'extension (suppuration, tuméfaction, trismus, ADP, fièvre)","Ostéonécrose","ostéonécrose","R",OST,null,1]];
+const PROF=[["G","Population générale"],["RI","Risque infectieux augmenté"],["ONM","Haut risque ONM"],["EI","Haut risque endocardite"]];
+let mode="ap",prof="G";
+const nrm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const BD={R:["R","Recommandée"],"R*":["R","Recommandée (balance bénéfice/risque au cas par cas)"],N:["N","Non recommandée"],"N*":["N","Non recommandée (bénéfice/risque au cas par cas)"],CI:["CI","Acte contre-indiqué"],C:["C","Selon terrain / signes d'extension"],NC:["C","Non cité dans la reco endocardite : à discuter"]};
+const bd=v=>`<span class="bdg ${BD[v][0]}">${BD[v][1]}</span>`;
+const rxh=(r,t)=>`<div class="rx">${t?`<div class="lbl">${t}</div>`:""}<div>${r.l1}</div><div class="small"><b>Si allergie / CI :</b> ${r.alt}</div>${r.l2?`<div class="small"><b>2ᵉ intention (échec) :</b> ${r.l2}</div>`:""}${r.note?`<div class="box tip">💡 ${r.note}</div>`:""}</div>`;
+/* Haut risque d'endocardite — HAS, Prise en charge dentaire des patients à risque d'EI, mars 2024 */
+RX.ei={t:"Haut risque EI : prise unique dans l'heure avant le geste",l1:"<b>Amoxicilline 2 g</b> per os<br>IV : <b>ampicilline 2 g</b> IV/IM ou <b>céfazoline 1 g</b> IV",alt:"Azithromycine 500 mg per os (CI si QT long) · pristinamycine 1 g per os (hors AMM) · IV : céfazoline 1 g (CI si ATCD d'anaphylaxie, angio-œdème ou urticaire aux pénicillines)",note:"Séances sous AP espacées d'au moins 3 semaines ; sinon changer de classe d'antibiotique. IM contre-indiquée sous anticoagulants."};
+const MEMB="Contre-indiqué si utilisation d'une membrane de régénération osseuse.";
+const EI={
+"Pulpotomie de dent temporaire":["R","Enfant uniquement."],
+"Traitement endodontique de dent temporaire":["CI","Pulpectomie des dents temporaires contre-indiquée."],
+"Coiffage / pulpotomie de dent permanente":["CI","Coiffage pulpaire sur dent permanente mature : contre-indiqué. Pulpotomie sur dent permanente mature : autorisée sous AP. Dent immature (enfant) : coiffage et pulpotomie autorisés sous AP."],
+"Traitement endodontique d'urgence, pulpe vitale":["R","Pulpectomie autorisée sous AP."],
+"Traitement endodontique, pulpe non vitale":["R","CI si dent non restaurable, support parodontal insuffisant ou patient non compliant. Dent symptomatique avec LIPOE : traiter après résolution des symptômes par antibiothérapie."],
+"Reprise de traitement endodontique":["R","Mêmes réserves que le traitement endodontique."],
+"Chirurgie endodontique (péri-apicale / péri-radiculaire)":["R",MEMB],
+"Sondage parodontal":["R"],
+"Détartrage / surfaçage radiculaire":["R"],
+"Chirurgie d'assainissement parodontal":["R","Traitement chirurgical des poches ± comblement. "+MEMB],
+"Élongation coronaire":["R"],
+"Amputation radiculaire":["NC"],
+"Chirurgie plastique parodontale (lambeau, greffe gingivale)":["NC","Seule la gingivectomie est citée (autorisée sous AP)."],
+"Chirurgie parodontale reconstructrice / régénératrice (biomatériaux)":["CI","Toute chirurgie avec membrane de régénération osseuse est contre-indiquée. Comblement sans membrane : autorisé sous AP."],
+"Pose d'implant(s)":["R","Après discussion des autres options. Conditions obligatoires : asepsie optimale, pas de membrane, pas de maladie parodontale, hygiène satisfaisante (+ éducation, glycémie contrôlée, arrêt du tabac). Sinon contre-indiqué."],
+"Greffe osseuse pré- ou per-implantaire":["R","Chirurgie pré-implantaire autorisée sous AP. "+MEMB],
+"Élévation sinusienne (sinus lift)":["R","Chirurgie pré-implantaire autorisée sous AP. "+MEMB],
+"Chirurgie plastique péri-implantaire":["NC"],
+"Dégagement d'implant":["R","Pose de piliers de cicatrisation sur implants enfouis."],
+"Chirurgie des péri-implantites":["CI","Tout traitement de la péri-implantite est contre-indiqué : dépose de l'implant, sous AP."],
+"Avulsion dentaire (dent sur arcade, racines, alvéolectomie, séparation)":["R"],
+"Avulsion de dent incluse, ectopique ou en désinclusion":["R"],
+"Autotransplantation dentaire":["NC"],
+"Chirurgie osseuse pré-prothétique (tori, tubérosité)":["NC"],
+"Chirurgie pré-orthodontique de dent incluse ou enclavée":["R","Dégagement orthodontique de dent incluse. Corticotomies : autorisées sous AP."],
+"Freinectomie":["R"],
+"Biopsie / exérèse de lésion bénigne des tissus mous":["R"],
+"Biopsie / exérèse de lésion osseuse bénigne des mâchoires":["R",MEMB],
+"Réimplantation de dent permanente expulsée":["R","Dents matures et immatures."],
+"Repositionnement de dent luxée, intruse ou extruse (± fracture alvéolaire)":["R","Tous les actes de traumatologie dentaire et alvéolaire sont autorisés sous AP."],
+"Fracture coronaire / radiculaire":["R","Tous les actes de traumatologie dentaire et alvéolaire sont autorisés sous AP."],
+"Plaie des tissus mous":["NC"],
+"Pose / dépose de dispositif orthodontique collé ou scellé":["N","Dispositifs supra-gingivaux."],
+"Pose de matériel d'ancrage orthodontique":["R","Mini-vis / plaques d'ancrage (pose et dépose). Stripping aussi sous AP."],
+"Soin prothétique / prise d'empreintes":["N"],
+"Anesthésie para-apicale ou loco-régionale":["N","Site non inflammatoire. En site inflammatoire : AP recommandée."],
+"Anesthésie intraligamentaire":["R","Uniquement en 2ᵉ intention."],
+"Anesthésie ostéo-centrale":["R","Uniquement en 2ᵉ intention."],
+"Prévention, digue, soin restaurateur, radio, dépose de fils":["N","Digue sur gencive inflammatoire : AP recommandée."]};
+const st=(a,p)=>p=="EI"?(EI[a[0]]?EI[a[0]][0]:a[3]):a[{G:3,RI:4,ONM:5}[p]];
+function apCard(a){const v=st(a,prof);let h=`<div class="res"><div class="cat">${a[1]}</div><h3>${a[0]}</h3>${bd(v)}`;
+if(prof=="ONM"&&a[6])h+=`<div class="box warn">⚠️ ${a[6]}</div>`;
+if(prof=="EI"){const e=EI[a[0]];if(e&&e[1])h+=`<div class="box ${v=="CI"?"warn":"tip"}">${v=="CI"?"⚠️":"💡"} ${e[1]}</div>`;if(!e)h+=`<div class="small">Non spécifique à l'endocardite : la reco générale s'applique.</div>`}
+else if(a[8])h+=`<div class="small">${a[8]}</div>`;
+if(v[0]=="R"){h+=a[7]?rxh(RX[a[7]],RX[a[7]].t):prof=="EI"?rxh(RX.ei,RX.ei.t):prof=="ONM"?rxh(RX.onm,RX.onm.t)+rxh(RX.std,"Si l'acte n'expose pas l'os : prise unique"):rxh(RX.std,RX.std.t)}
+h+=`<div class="small" style="margin-top:6px">Autres profils : ${PROF.filter(p=>p[0]!=prof).map(p=>p[1]+" → "+BD[st(a,p[0])][1].split(" (")[0].split(" dans")[0]).join(" · ")}</div></div>`;return h}
+function cuCard(c){let h=`<div class="res"><div class="cat">${c[1]}</div><h3>${c[0]}</h3>${bd(c[3])}${c[6]?`<span class="bdg CI">🏥 Hospit ± IV possible</span>`:""}`;
+if(c[3]=="C")h+=`<div class="small">${COND}</div>`;if(c[5])h+=`<div class="box warn">⚠️ ${c[5]}</div>`;if(c[4])h+=rxh(c[4]);return h+"</div>"}
+function abx(){const q=nrm((document.getElementById("aq")||{}).value||"");
+const L=(mode=="ap"?AP:CU).filter(x=>nrm(x[0]+" "+x[1]+" "+x[2]).includes(q));
+document.getElementById("ares").innerHTML=L.map(mode=="ap"?apCard:cuCard).join("")||`<p class="small">Aucun résultat. Toute indication absente de la liste ne constitue pas une indication à l'antibiothérapie.</p>`}
+function abxInit(){const el=document.getElementById("abx");el.innerHTML=`<header><div class="top"><small>CHU Bordeaux · Chirurgie orale</small><button id="theme">◐ Thème</button></div><h1>Recommandations</h1><p>Les recos utiles au fauteuil et au bloc.</p></header><div class="seg" id="rseg"><button class="on" data-r="abx">💊 Antibiotiques</button><button data-r="at">🩸 Antithrombotiques</button></div><div id="abxBody"><div class="lbl" style="margin-top:4px">HAS bucco-dentaire 2026 + endocardite 2024 · adulte</div>
+<div class="seg" id="amode"><button data-m="ap" class="on">🛡️ Antibioprophylaxie (acte)</button><button data-m="cu">🦠 Antibiothérapie (infection)</button></div>
+<div id="aprof"><div class="lbl">Profil du patient</div><div class="seg" id="aps">${PROF.map(p=>`<button data-p="${p[0]}" class="${p[0]==prof?'on':''}">${p[1]}</button>`).join("")}</div></div>
+<input id="aq" placeholder="Ex. : dent de sagesse, sinus lift, cellulite…"><div id="ares"></div>
+<details><summary>👤 Qui est « à risque infectieux augmenté » ?</summary><ul><li>Chimiothérapie aplasiante</li><li>Immunosuppresseur / immunomodulateur / biothérapie (au cas par cas, avec le prescripteur)</li><li>Corticoïdes ≥ 10 mg/j éq. prednisolone depuis > 2 semaines</li><li>Traitement anti-rejet (greffe d'organe, allogreffe de CSH)</li><li>VIH avec CD4 < 200/mm³ · neutropénie < 500/mm³</li><li>Déficit immunitaire congénital ou du complément</li><li>Asplénie depuis < 5 ans</li><li>Diabète avec HbA1c ≥ 9 % (orienter vers le médecin sans surseoir au geste)</li><li>Insuffisance rénale sévère (DFG < 30) ou dialyse</li><li>Insuffisance hépatocellulaire sévère (TP ≤ 50 %)</li><li>Syndrome drépanocytaire majeur (à évaluer avec le référent)</li></ul></details>
+<details><summary>🦴 Qui est « à haut risque d'ONM » ?</summary><ul><li>Radiothérapie cervico-faciale ≥ 40 Gy sur les mâchoires</li><li>Dénosumab (ou biosimilaire), dernière injection < 6 mois</li><li>Bisphosphonates (per os ou IV) pour pathologie maligne</li><li>Anti-angiogéniques pour pathologie maligne</li><li>Bisphosphonates pour pathologie bénigne ≥ 5 ans cumulés</li></ul><p class="small">Population générale = rémission de cancer, prothèse articulaire, allogreffe sans anti-rejet, dénutrition, tabac, diabète HbA1c < 9 %, obésité, grossesse, âge, bisphosphonates bénins < 5 ans, dénosumab > 6 mois, RT < 40 Gy.</p></details>
+<details><summary>❤️ Qui est « à haut risque d'endocardite » ?</summary><ul><li>Antécédent d'endocardite infectieuse</li><li>Prothèse valvulaire ou matériel de réparation valvulaire, posé chirurgicalement ou par voie percutanée (TAVI, clip…)</li><li>Cardiopathie congénitale cyanogène complexe (ventricule unique, Eisenmenger…)</li><li>Cardiopathie congénitale complexe traitée par matériel prothétique : jusqu'à 6 mois après, ou à vie si shunt résiduel</li><li>Pompe d'assistance ventriculaire</li></ul><p class="small"><b>Risque intermédiaire</b> (pas d'AP, pas de CI) : valvulopathie (anomalie, fuite, rétrécissement), cardiomyopathie hypertrophique obstructive, autre cardiopathie congénitale, stimulateur avec sonde intracardiaque. En cas de doute sur la cardiopathie, contacter le cardiologue ou le médecin traitant.</p><p class="small"><b>Suivi</b> : contrôle bucco-dentaire au moins semestriel ; OPT en début de prise en charge. Sous AVK : soins possibles sans arrêt, INR < 4 contrôlé dans les 24 h (sauf gestes à haut risque hémorragique). Piercings contre-indiqués. Avant chirurgie valvulaire programmée : éradiquer les foyers ≥ 15 jours avant ; en urgence (72 h), aucun soin dentaire ne doit retarder le geste.</p></details>
+<details><summary>📌 Règles générales</summary><ul><li>Bain de bouche CHX 0,12 % ou povidone iodée 10 % avant chaque geste.</li><li><b>Haut risque d'endocardite</b> : choisir le profil dédié (reco HAS 2024). Risque intermédiaire : ni contre-indication ni AP spécifique. Bain de bouche CHX 0,12 ou 0,20 % pendant 1 min avant tout geste (haut risque et intermédiaire).</li><li>Oubli ou acte en urgence : la prophylaxie peut être prise jusqu'à 2 h après le geste.</li><li>Préciser « délivrance à l'unité » sur l'ordonnance d'antibioprophylaxie.</li><li>Antibiothérapie curative toujours associée à un geste local (drainage, avulsion, pulpectomie…).</li><li>Réévaluer à J3 : poursuivre, ou passer en 2ᵉ intention si pas d'amélioration. Échec de 2ᵉ intention → avis infectiologique.</li><li>Insuffisant rénal : prise unique sans adaptation ; schémas prolongés à adapter au DFG.</li><li>Obésité : <a href="https://www.abxbmi.com" target="_blank" rel="noopener">abxbmi.com</a> · Grossesse / allaitement : <a href="https://www.lecrat.fr" target="_blank" rel="noopener">lecrat.fr</a> (amox, clarithro, azithro, métronidazole possibles à tout terme).</li><li>Antibiothérapie locale : jamais indiquée. Sous AINS : pas d'antibiotique systématique.</li><li>Hospitalisation ± IV : cellulite avec signes systémiques, ostéomyélite, ONM avec extension, observance impossible. Relais per os dès que possible.</li></ul></details>
+<details><summary>💊 Contre-indications & interactions</summary><p class="small">Sous-menu à venir.</p></details>
+<p class="small">Source : HAS, « Prescription des antibiotiques en pratique bucco-dentaire », adoptée le 16/07/2026 (tableaux 1 à 14) · HAS, « Prise en charge dentaire des patients à risque d'endocardite infectieuse », mars 2024. Posologies adulte uniquement. Toujours vérifier CI, précautions et interactions (ANSM / base publique des médicaments). Prescriptions hors AMM sous la responsabilité du prescripteur.</p></div><div id="atBody" class="hide"></div>`;
+el.querySelector("#amode").onclick=e=>{const m=e.target.dataset.m;if(!m)return;mode=m;el.querySelectorAll("#amode button").forEach(b=>b.classList.toggle("on",b.dataset.m==m));el.querySelector("#aprof").classList.toggle("hide",m=="cu");abx()};
+el.querySelector("#aps").onclick=e=>{const p=e.target.dataset.p;if(!p)return;prof=p;el.querySelectorAll("#aps button").forEach(b=>b.classList.toggle("on",b.dataset.p==p));abx()};
+el.querySelector("#aq").oninput=abx;abx()}
+abxInit();
+document.getElementById("theme").onclick=()=>{const r=document.documentElement;const d=r.dataset.theme=="dark"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);r.dataset.theme=d?"light":"dark";ls.set("theme",r.dataset.theme)};
+
+</script><script>
+/* ===== Module antithrombotiques — SFAR/GIHP 2026 (chapitre chirurgie orale) pour AOD/AVK et classement du risque ; SFCO 2015 pour AAP et héparines ===== */
+// [acte, mots-clés, niveau 0 sans risque / 1 faible / 2 élevé / 3 déconseillé / 4 contre-indiqué, note]
+const ACT=[
+["Anesthésie locale (para-apicale, intraligamentaire, intra-osseuse)","anesthésie",0],
+["Détartrage","",0],
+["Débridement, assainissement des poches parodontales","surfaçage",0],
+["Avulsion simple (sans alvéolectomie)","extraction dent",1],
+["Avulsions multiples dans 1 quadrant, ou 2 quadrants d'un seul côté","extraction dents",1],
+["Implant(s) avec lambeau dans un même quadrant, implants symphysaires, flapless sur 2 quadrants d'un même maxillaire","implant",1],
+["Élévation du sinus par voie crestale","sinus lift summers",1],
+["Dégagement d'implants (pilier de cicatrisation) sur un seul maxillaire","implant",1],
+["Incision et drainage d'une tuméfaction intra-orale","abcès cellulite",1,"Par un praticien expérimenté, avec un plateau technique adapté."],
+["Biopsie","",1,"Tissus mous sans plan osseux (plancher antérieur, langue, lèvres) : la compression est impossible → discussion pluridisciplinaire."],
+["Avulsions multiples sur plus de 2 quadrants","extraction dents assainissement",2],
+["Avulsion de dent(s) incluse(s)","dent de sagesse 38 48 extraction",2],
+["Implants multiples avec lambeau sur plusieurs quadrants, implants zygomatiques","implant",2],
+["Élévation du sinus avec lambeau par voie latérale","sinus lift",2,"Examiner le CBCT pour repérer l'artère alvéolo-antrale et adapter la hauteur de la fenêtre."],
+["Chirurgie pré-orthodontique de dent enclavée ou incluse, pose d'ancrages (vis, plaques)","désinclusion canine minivis",2],
+["Greffe osseuse d'apposition (onlay)","greffe",2],
+["Greffe osseuse particulaire / ROG (sausage technique)","greffe régénération",2],
+["Chirurgie pré-prothétique sur un quadrant (torus, crête flottante, hyperplasie gingivale)","tori",2],
+["Chirurgie d'une lithiase salivaire","calcul glande",2],
+["Exérèse de pseudotumeurs / tumeurs bénignes de la muqueuse (ex. kyste mucoïde)","mucocèle",2],
+["Chirurgie endodontique périapicale, énucléation de kystes et tumeurs bénignes","kyste résection apicale",2],
+["Fermeture d'une communication bucco-sinusienne (lambeau, boule de Bichat)","CBS",2],
+["Chirurgie muco-gingivale dans un même quadrant (± prélèvement conjonctif palatin)","greffe gingivale",2],
+["Lambeau d'assainissement parodontal, comblement de poches","parodontal",2],
+["Gingivectomie","",2],
+["Bloc du nerf alvéolaire inférieur unilatéral","anesthésie tronculaire spix",3,"Possible en dernier recours. Aspiration de contrôle impérative."],
+["Greffe osseuse autologue","prélèvement",3,"Site de prélèvement supplémentaire : privilégier les greffons hétérologues ou synthétiques."],
+["Bloc du nerf alvéolaire inférieur bilatéral","anesthésie tronculaire spix",4,"Risque d'hématome latéro-pharyngé bilatéral et de dyspnée."],
+["Prélèvement osseux symphysaire","menton greffe",4,"Risque d'hématome du plancher buccal et de dyspnée."]];
+const LV=[["R","Sans risque hémorragique"],["C","Risque hémorragique faible"],["CI","Risque hémorragique élevé"],["C","Geste déconseillé"],["CI","Geste contre-indiqué"]];
+const TT=[["mono","AAP seul","Aspirine (Kardégic), clopidogrel (Plavix)"],["bi","Double AAP","Aspirine + clopidogrel / prasugrel / ticagrelor"],["avk","AVK","Warfarine (Coumadine), fluindione (Préviscan), acénocoumarol (Sintrom)"],["aod","AOD","Apixaban (Eliquis), rivaroxaban (Xarelto), dabigatran (Pradaxa)"],["hep","Héparine","HBPM (Lovenox, Innohep…), HNF (Calciparine)"]];
+let tt="mono";
+const S=(c,t)=>`<div class="step" style="display:block"><div class="t"><span class="bdg ${c}">${t[0]}</span>${t[1]?` <b>${t[1]}</b>`:""}</div>${t[2]?`<div class="small" style="margin-top:4px">${t[2]}</div>`:""}</div>`;
+const SEG=`<div class="box tip">💡 Si possible, <b>segmenter</b> pour transformer le geste en plusieurs gestes à faible risque, sans arrêt du traitement.</div>`;
+function conduct(lv){
+if(lv>=3)return "";
+if(tt=="mono")return S("R",["Pas d'arrêt","Prise en charge en ville",lv==2?"Poursuite de la monothérapie pour tout acte, quel que soit le risque hémorragique.":""]);
+if(tt=="bi")return lv<2?S("R",["Pas d'arrêt","Prise en charge en ville"]):
+`<div class="box warn">⚠️ Avis obligatoire du médecin prescripteur (risque thrombotique).</div>`+S("C",["Risque thrombotique moindre","Passer en monothérapie, en ville","Poursuivre l'aspirine. Arrêt du 2ᵉ AAP : clopidogrel 5 j, prasugrel 7 j, ticagrelor 3 à 5 j avant."])+S("CI",["Risque thrombotique élevé","Bithérapie maintenue, prise en charge hospitalière","Ou surseoir à l'intervention."]);
+if(tt=="avk")return lv<2?S("R",["INR ≤ 4 : pas d'arrêt","Prise en charge en ville","INR récent : idéalement dans les 24 h, au plus tard 72 h avant (SFCO). INR stable."])+S("CI",["INR > 4","Surseoir à la chirurgie","Contacter le médecin prescripteur."]):
+SEG+`<div class="box warn">⚠️ Sinon : avis obligatoire du médecin prescripteur.</div>`+S("C",["Risque thrombotique modéré","Arrêt des AVK, prise en charge en ville","Dernière prise à J-6 (warfarine), J-5 (fluindione), J-4 (acénocoumarol). Reprise le soir de la procédure."])+S("CI",["Risque thrombotique élevé","Adapter, discuter l'hospitalisation","Valve mécanique, FA avec antécédent embolique, MTEV complexe. Relais par héparine selon le risque."])+S("CI",["EP, TVP ou AVC < 3 mois","Envisager de repousser la chirurgie"]);
+if(tt=="aod")return lv==0?S("R",["Pas d'arrêt","Prise en charge en ville"]):lv==1?S("R",["Pas d'arrêt + acide tranexamique","Prise en charge en ville","Facteur de risque hémorragique supplémentaire (geste ou patient) : sauter la prise de la veille au soir et celle du matin, reprise aux doses habituelles ≥ 6 h après la fin du geste."]):
+SEG+`<div class="box warn">⚠️ Sinon : avis obligatoire du médecin prescripteur.</div>`+S("C",["FA ou ETEV > 3 mois","Arrêt des AOD sans relais + acide tranexamique, en ville","Dernière prise à J-3 (J0 = chirurgie). J-5 pour le dabigatran si DFG < 50, et pour apixaban/rivaroxaban si DFG < 30. Reprise aux doses habituelles à J2 (48–72 h selon le risque hémorragique)."])+S("CI",["MTEV complexe","Adapter, discuter l'hospitalisation","SAPL, HTP thromboembolique chronique, thrombophilie, récidive sous anticoagulant…"])+S("CI",["EP, TVP ou AVC < 3 mois","Envisager de repousser la chirurgie"]);
+if(tt=="hep")return S("R",["Héparine préventive","Pas d'arrêt, en ville","Geste dans la ½ journée qui précède la prochaine injection."])+(lv<2?S("C",["Héparine curative","Avis du prescripteur, en ville","1 injection/24 h : pas d'arrêt, geste dans la ½ journée avant la prochaine injection. 2 injections/24 h : sauter l'injection du matin."]):
+S("CI",["Héparine curative","Avis du prescripteur, prise en charge hospitalière","Arrêt 6 à 8 h avant (HNF) ou la veille (HBPM, 24 h). Reprise selon le contrôle de l'hémostase. TCA / anti-Xa préopératoires inutiles."]));}
+function atCard(a){const l=LV[a[2]];let h=`<div class="res"><h3>${a[0]}</h3><span class="bdg ${l[0]}">${l[1]}</span>`;
+if(a[3])h+=`<div class="box ${a[2]>=3?"warn":"tip"}">${a[2]>=3?"⚠️":"💡"} ${a[3]}</div>`;
+return h+(a[2]<3?`<div class="rx"><div class="lbl">Conduite à tenir · ${TT.find(t=>t[0]==tt)[1]}</div>${conduct(a[2])}</div>`:"")+"</div>"}
+function atList(){const q=nrm(document.getElementById("tq").value||"");
+const L=ACT.filter(a=>nrm(a[0]+" "+a[1]).includes(q));
+document.getElementById("tres").innerHTML=L.map(atCard).join("")||`<p class="small">Aucun acte trouvé.</p>`;
+document.getElementById("ttx").textContent=TT.find(t=>t[0]==tt)[2]}
+function atInit(){const el=document.getElementById("atBody");el.innerHTML=`<div class="lbl">Traitement du patient</div><div class="seg" id="tts">${TT.map(t=>`<button data-x="${t[0]}" class="${t[0]==tt?'on':''}">${t[1]}</button>`).join("")}</div><div class="small" id="ttx" style="margin:-4px 0 8px"></div>
+<input id="tq" placeholder="Ex. : dent de sagesse, sinus, biopsie…"><div id="tres"></div>
+<details><summary>🩹 Hémostase locale</summary><ul><li><b>Systématique</b>, quel que soit le traitement.</li><li>Hémostase conventionnelle : compression, sutures, hémostatiques résorbables (éponge collagène, gaze de cellulose) ± colle cyanoacrylate, compresse ou bain de bouche passif d'acide tranexamique 10 %.</li><li>Risque élevé, en plus : colle de fibrine (fibrinogène + thrombine), électrocoagulation mono/bipolaire, gouttière de compression.</li><li>Préférer le mini-invasif : pas de décharge verticale, décollement et ostéotomie minimes, flapless, chirurgie guidée.</li><li>Hygiène renforcée et détartrage avant tout geste, pour réduire l'inflammation gingivale.</li><li>Saignement post-op non contrôlé par compression : reprise de l'hémostase sous AL (décaillotage, révision). Saignement persistant : hospitalisation.</li></ul></details>
+<details><summary>⚠️ Facteurs majorant le risque</summary><ul><li>Décollement au-delà de la ligne muco-gingivale, décollement lingual, incision de décharge verticale</li><li>Avulsion en zone inflammatoire, temps opératoire > 1 h</li><li>Zones à risque : plancher buccal, symphyse, foramen mentonnier, sinus maxillaire</li><li>Terrain : AAP associé, HTA mal contrôlée, insuffisance rénale ou hépatique, cardiopathies multiples → arrêt à discuter avec le prescripteur, même pour un geste à faible risque</li></ul></details>
+<details><summary>💊 Interactions à connaître</summary><ul><li><b>AVK</b> : aspirine et AINS contre-indiqués ; antalgiques = paracétamol ± opiacés.</li><li><b>AVK + antibiotiques</b> : hausse de l'INR possible avec amoxicilline (± clavulanique), clindamycine, métronidazole, macrolides (sauf spiramycine) → prévenir le patient et contrôler l'INR dans les jours qui suivent. L'antibioprophylaxie en prise unique ne modifie pas l'INR.</li><li><b>AOD</b> : éviter la clarithromycine.</li><li>Aucun examen biologique ne prédit le risque hémorragique sous AAP ou AOD.</li></ul></details>
+<details><summary>📌 Organisation</summary><ul><li>Opérer le matin et en début de semaine.</li><li>Segmenter les interventions dès que possible.</li><li>Risque hémorragique : du ressort du chirurgien. Risque thrombotique : du ressort du prescripteur.</li><li>Prise en charge en ville possible si patient coopérant et hôpital à < 50 km / < 1 h.</li><li>Continuité des soins : le patient doit pouvoir joindre un praticien ou un service d'astreinte en cas de saignement.</li><li>Gestes contre-indiqués si le plateau technique ou l'expérience sont insuffisants, et tous les gestes contre-indiqués en cas de haut risque d'endocardite associé.</li></ul></details>
+<p class="small">Sources : SFAR / GIHP, RFE « Gestion des anticoagulants pour une procédure invasive programmée », chapitre « Procédures invasives en chirurgie orale » (SFCO), 2026 — classement du risque, AOD, AVK. SFCO, « Gestion péri-opératoire des patients traités par antithrombotiques en chirurgie orale », juillet 2015 — AAP, héparines, interactions, organisation. Toujours confirmer avec le prescripteur pour les gestes à risque élevé.</p>`;
+el.querySelector("#tts").onclick=e=>{const x=e.target.dataset.x;if(!x)return;tt=x;el.querySelectorAll("#tts button").forEach(b=>b.classList.toggle("on",b.dataset.x==x));atList()};
+el.querySelector("#tq").oninput=atList;atList()}
+atInit();
+document.getElementById("rseg").onclick=e=>{const r=e.target.dataset.r;if(!r)return;document.querySelectorAll("#rseg button").forEach(b=>b.classList.toggle("on",b.dataset.r==r));document.getElementById("abxBody").classList.toggle("hide",r!="abx");document.getElementById("atBody").classList.toggle("hide",r!="at")};
+</script>
+</body></html>
